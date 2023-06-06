@@ -18,7 +18,7 @@ defmodule App do
   end
 
   def run(state) do
-    IO.inspect state
+    IO.inspect(state)
     IO.gets(:stdio, "") |> String.trim() |> to_runner(state) |> run
   end
 
@@ -52,7 +52,14 @@ defmodule App do
   defp run_attr(input_raw, state) do
     import String, only: [replace: 3, trim: 1, split: 2]
     [var, val] = input_raw |> trim |> replace(~r/\s+/, "") |> split("=")
-    val = val |> format_exp |> convert_to_postfix |> build_tree |> eval_exp(state.var_map) |> Float.to_string
+
+    val =
+      val
+      |> format_exp
+      |> convert_to_postfix
+      |> build_tree
+      |> eval_exp(state.var_map)
+      |> Float.to_string()
 
     %{state | var_map: Map.put(state.var_map, var, val)}
   end
@@ -65,6 +72,11 @@ defmodule App do
 
   defp run_cmd(input_raw, state) when input_raw === "/help" do
     IO.puts("Hey, this is a helpful text about the usage of the application")
+    %{state | control: :continue}
+  end
+
+  defp run_cmd(input_raw, state) when input_raw === "/clear" do
+    IO.write(:stdio, "\u001B[2J\u001B[0;0f")
     %{state | control: :continue}
   end
 

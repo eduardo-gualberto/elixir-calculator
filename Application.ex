@@ -80,5 +80,9 @@ defmodule App do
     %{state | control: :continue}
   end
 
+  defp run_cmd(input_raw, state) when input_raw === "/erase" do
+    %{state | var_map: Map.new()}
+  end
+
   defp run_cmd(_, state), do: %{state | control: :invalid}
 end

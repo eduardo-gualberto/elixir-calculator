@@ -35,10 +35,10 @@ The program can take an expression such as **"1 + 2 * 3"** and give its result a
  - **/exit**: allows exiting the program loop. Notice that it will erase all saved values from the calculator's memory
 
 ## Next steps
-1. save and load saved values to/from file
-    1. **/load**: loads saved values from given file
-    2. **/save**: saves current saved values to given file
-3. command **"/clear"**: cleans terminal view
-4. command **"/erase"**: delete all saved values from memory
-5. allow expressions with redundant parantheses, such as: 1 - (-1)
-6. enhance terminal looks: input field for usage, memory section and a result section
+- [ ] save and load saved values to/from file
+    - [ ] **/load**: loads saved values from given file
+    - [ ] **/save**: saves current saved values to given file
+- [x] command **"/clear"**: cleans terminal view
+- [x] command **"/erase"**: delete all saved values from memory
+- [x] allow expressions with redundant parantheses, such as: 1 - (-1)
+- [ ] enhance terminal looks: input field for usage, memory section and a result section
